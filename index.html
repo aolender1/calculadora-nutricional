@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Nutricional</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h2 class="sidebar-title">ANAMNESIS NUTRICIONAL</h2>
+            <h2 class="sidebar-title logo-title">
+                <img src="logo.svg" alt="Logo" class="logo">
+                JULIETA TRACHTA
+            </h2>
+
+            <nav class="sidebar-nav">
+                <button class="nav-item active" data-section="identificacion">
+                    DATOS PERSONALES
+                </button>
+                <button class="nav-item" data-section="antropometria">
+                    ANTROPOMETRÍA
+                </button>
+                <button class="nav-item" data-section="velocidad-crecimiento">
+                    VELOCIDAD DE CRECIMIENTO
+                </button>
+                <button class="nav-item" data-section="composicion-corporal">
+                    COMPOSICIÓN CORPORAL
+                </button>
+                <button class="nav-item" data-section="gasto-energetico">
+                    GASTO ENERGÉTICO
+                </button>
+                <button class="nav-item" data-section="densitometria">
+                    DENSITOMETRÍA
+                </button>
+                <button class="nav-item" data-section="presion-arterial">
+                    PRESIÓN ARTERIAL
+                </button>
+                <button class="nav-item" data-section="situaciones-especiales">
+                    SITUACIONES ESPECIALES
+                </button>
+            </nav>
+
+            <div class="sidebar-actions">
+                <button class="btn btn-primary">CREAR INFORME</button>
+                <button class="btn btn-secondary">DESCARGAR EXCEL</button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Datos Generales Section -->
+            <section id="identificacion" class="section">
+                <header class="section-header">
+                    <h3>🌼Datos Generales</h3>
+                    <button class="btn btn-clear">BORRAR DATOS</button>
+                </header>
+                <form class="form-grid">
+                    <div class="form-group">
+                        <label for="identificador">Nombre y Apellido</label>
+                        <input type="text" id="identificador" name="identificador">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Sexo</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="sexo" value="mujer">
+                                <span>Mujer</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="sexo" value="hombre">
+                                <span>Hombre</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Fecha de nacimiento</label>
+                        <div class="date-group">
+                            <select id="dia-nac" name="dia-nac">
+                                <option value="">Día</option>
+                                <!-- Options will be populated by JS -->
+                            </select>
+                            <select id="mes-nac" name="mes-nac">
+                                <option value="">Mes</option>
+                                <!-- Options will be populated by JS -->
+                            </select>
+                            <select id="ano-nac" name="ano-nac">
+                                <option value="">Año</option>
+                                <!-- Options will be populated by JS -->
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Fecha para cálculos</label>
+                        <div class="date-group">
+                            <select id="dia-calc" name="dia-calc">
+                                <option value="">Día</option>
+                                <!-- Options will be populated by JS -->
+                            </select>
+                            <select id="mes-calc" name="mes-calc">
+                                <option value="">Mes</option>
+                                <!-- Options will be populated by JS -->
+                            </select>
+                            <select id="ano-calc" name="ano-calc">
+                                <option value="">Año</option>
+                                <!-- Options will be populated by JS -->
+                            </select>
+                            <button type="button" class="btn btn-today" id="btn-today-calc">Hoy</button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edad">Edad</label>
+                        <input type="text" id="edad" name="edad" readonly>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Fecha de Ingreso</label>
+                        <div class="date-group">
+                            <select id="dia-ingreso" name="dia-ingreso">
+                                <option value="">Día</option>
+                                <!-- Options will be populated by JS -->
+                            </select>
+                            <select id="mes-ingreso" name="mes-ingreso">
+                                <option value="">Mes</option>
+                                <!-- Options will be populated by JS -->
+                            </select>
+                            <select id="ano-ingreso" name="ano-ingreso">
+                                <option value="">Año</option>
+                                <!-- Options will be populated by JS -->
+                            </select>
+                            <button type="button" class="btn btn-today" id="btn-today-ingreso">Hoy</button>
+                        </div>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Antropometría Section -->
+            <section id="antropometria" class="section">
+                <header class="section-header">
+                    <h3>🌼Antropometría</h3>
+                    <button class="btn btn-clear">BORRAR DATOS</button>
+                </header>
+                <form class="form-grid">
+                    <div class="form-group">
+                        <label for="peso">Peso (kg)</label>
+                        <input type="number" id="peso" name="peso" step="0.1">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="longitud">Talla (cm)</label>
+                        <input type="number" id="longitud" name="longitud" step="0.1">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pc">PC (cm)</label>
+                        <input type="number" id="pc" name="pc" step="0.1">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="imc">
+                            IMC (kg/m²)
+                            <button type="button" class="info-btn" id="imc-info-btn" aria-label="Información sobre IMC">ℹ️</button>
+                            <small>Calculado automáticamente</small>
+                        </label>
+                        <input type="text" id="imc" name="imc" readonly placeholder="Se calcula automáticamente">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="imc-clasificacion">Clasificación IMC</label>
+                        <input type="text" id="imc-clasificacion" name="imc-clasificacion" readonly placeholder="Se calcula automáticamente">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="iotf">Puntos de corte IOTF</label>
+                        <input type="text" id="iotf" name="iotf" readonly>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="sc">SC</label>
+                        <input type="text" id="sc" name="sc" readonly>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Velocidad de Crecimiento Section -->
+            <section id="velocidad-crecimiento" class="section">
+                <header class="section-header">
+                    <h3>🌼Velocidad de Crecimiento</h3>
+                    <button class="btn btn-clear">BORRAR DATOS</button>
+                </header>
+                <form class="form-grid">
+                    <!-- Formulario a completar -->
+                    <p class="placeholder">Formulario en desarrollo...</p>
+                </form>
+            </section>
+
+            <!-- Composición Corporal Section -->
+            <section id="composicion-corporal" class="section">
+                <header class="section-header">
+                    <h3>🌼Composición Corporal</h3>
+                    <button class="btn btn-clear">BORRAR DATOS</button>
+                </header>
+                <form class="form-grid">
+                    <!-- Formulario a completar -->
+                    <p class="placeholder">Formulario en desarrollo...</p>
+                </form>
+            </section>
+
+            <!-- Gasto Energético Section -->
+            <section id="gasto-energetico" class="section">
+                <header class="section-header">
+                    <h3>🌼Gasto Energético</h3>
+                    <button class="btn btn-clear">BORRAR DATOS</button>
+                </header>
+                <form class="form-grid">
+                    <!-- Formulario a completar -->
+                    <p class="placeholder">Formulario en desarrollo...</p>
+                </form>
+            </section>
+
+            <!-- Densitometría Section -->
+            <section id="densitometria" class="section">
+                <header class="section-header">
+                    <h3>🌼Densitometría</h3>
+                    <button class="btn btn-clear">BORRAR DATOS</button>
+                </header>
+                <form class="form-grid">
+                    <!-- Formulario a completar -->
+                    <p class="placeholder">Formulario en desarrollo...</p>
+                </form>
+            </section>
+
+            <!-- Presión Arterial Section -->
+            <section id="presion-arterial" class="section">
+                <header class="section-header">
+                    <h3>🌼Presión Arterial</h3>
+                    <button class="btn btn-clear">BORRAR DATOS</button>
+                </header>
+                <form class="form-grid">
+                    <!-- Formulario a completar -->
+                    <p class="placeholder">Formulario en desarrollo...</p>
+                </form>
+            </section>
+
+            <!-- Situaciones Especiales Section -->
+            <section id="situaciones-especiales" class="section">
+                <header class="section-header">
+                    <h3>🌼Situaciones Especiales</h3>
+                    <button class="btn btn-clear">BORRAR DATOS</button>
+                </header>
+                <form class="form-grid">
+                    <!-- Formulario a completar -->
+                    <p class="placeholder">Formulario en desarrollo...</p>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+
+    <!-- Modal de información IMC -->
+    <div id="imc-info-modal" class="info-modal" role="dialog" aria-modal="true" aria-labelledby="imc-info-title" aria-hidden="true" style="display:none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="imc-info-title">Clasificación del IMC</h2>
+                <button type="button" class="modal-close" id="imc-info-close" aria-label="Cerrar información IMC">×</button>
+            </div>
+            <div class="modal-body">
+                <p>El Índice de Masa Corporal (IMC) se clasifica en las siguientes categorías:</p>
+                <div class="imc-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Rango IMC</th>
+                                <th>Clasificación</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>≤ 18.49</td>
+                                <td>Bajo Peso</td>
+                            </tr>
+                            <tr>
+                                <td>18.50 - 24.99</td>
+                                <td>Peso Normal</td>
+                            </tr>
+                            <tr>
+                                <td>25.00 - 29.99</td>
+                                <td>Sobrepeso</td>
+                            </tr>
+                            <tr>
+                                <td>30.00 - 34.99</td>
+                                <td>Obesidad Leve</td>
+                            </tr>
+                            <tr>
+                                <td>35.00 - 39.99</td>
+                                <td>Obesidad Media</td>
+                            </tr>
+                            <tr>
+                                <td>≥ 40.00</td>
+                                <td>Obesidad Mórbida</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p><strong>Nota:</strong> Esta clasificación ayuda a evaluar el estado nutricional de forma general.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

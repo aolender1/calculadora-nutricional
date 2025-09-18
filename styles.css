@@ -431,6 +431,76 @@ html {
     font-weight: bold;
 }
 
+/* Contextura Table */
+.contextura-table {
+    margin: 1rem 0;
+}
+
+.contextura-table h4 {
+    color: #E780BF;
+    font-weight: bold;
+    margin: 1.5rem 0 0.5rem 0;
+    font-size: 1.1rem;
+}
+
+.contextura-table h4:first-child {
+    margin-top: 1rem;
+}
+
+.contextura-table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+}
+
+.contextura-table th,
+.contextura-table td {
+    padding: 0.8rem;
+    text-align: left;
+    border-bottom: 1px solid #E780BF;
+}
+
+.contextura-table th {
+    background-color: #E780BF;
+    color: #333333;
+    font-weight: bold;
+}
+
+/* ICC Table */
+.icc-table {
+    margin: 1rem 0;
+}
+
+.icc-table h4 {
+    color: #E780BF;
+    font-weight: bold;
+    margin: 1.5rem 0 0.5rem 0;
+    font-size: 1.1rem;
+}
+
+.icc-table h4:first-child {
+    margin-top: 1rem;
+}
+
+.icc-table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+}
+
+.icc-table th,
+.icc-table td {
+    padding: 0.8rem;
+    text-align: left;
+    border-bottom: 1px solid #E780BF;
+}
+
+.icc-table th {
+    background-color: #E780BF;
+    color: #333333;
+    font-weight: bold;
+}
+
 @media (max-width: 768px) {
     .modal-content {
         width: 95%;
@@ -449,5 +519,93 @@ html {
     .imc-table td {
         padding: 0.5rem;
         font-size: 0.9rem;
+    }
+
+    .contextura-table th,
+    .contextura-table td {
+        padding: 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    .icc-table th,
+    .icc-table td {
+        padding: 0.5rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Estilos para tabla de pliegues */
+.form-group.full-width {
+    grid-column: 1 / -1; /* Ocupa todo el ancho del grid */
+}
+
+.table-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #E780BF;
+    margin-bottom: 1rem;
+    text-align: center;
+    border-bottom: 2px solid #E780BF;
+    padding-bottom: 0.5rem;
+}
+
+.pliegues-table {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 2px solid #E780BF;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.pliegues-row {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.pliegue-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.pliegue-item label {
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.pliegue-item input {
+    padding: 0.8rem;
+    border: 2px solid #E780BF;
+    border-radius: 6px;
+    font-size: 1rem;
+    background-color: #ffffff;
+    color: #333333;
+    transition: all 0.3s ease;
+}
+
+.pliegue-item input:focus {
+    outline: none;
+    border-color: #d96fb0;
+    box-shadow: 0 0 0 3px rgba(231, 128, 191, 0.2);
+}
+
+.pliegue-item input::placeholder {
+    color: #999;
+}
+
+/* Responsive para tabla de pliegues */
+@media (max-width: 768px) {
+    .pliegues-row {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .pliegues-table {
+        padding: 1rem;
     }
 }

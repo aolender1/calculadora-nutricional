@@ -158,11 +158,6 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="pc">PC (cm)</label>
-                        <input type="number" id="pc" name="pc" step="0.1">
-                    </div>
-
-                    <div class="form-group">
                         <label for="imc">
                             IMC (kg/m²)
                             <button type="button" class="info-btn" id="imc-info-btn" aria-label="Información sobre IMC">ℹ️</button>
@@ -177,13 +172,102 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="iotf">Puntos de corte IOTF</label>
-                        <input type="text" id="iotf" name="iotf" readonly>
+                        <label for="pc">Grasa Omron (%)</label>
+                        <input type="number" id="pc" name="pc" step="0.1">
                     </div>
 
                     <div class="form-group">
-                        <label for="sc">SC</label>
-                        <input type="text" id="sc" name="sc" readonly>
+                        <label for="omron-fat">
+                            Clasificacion % Grasa
+                            <button type="button" class="info-btn" id="omron-info-btn" aria-label="Información sobre IMC">ℹ️</button>
+                            <small>Calculado automáticamente</small>
+                        </label>
+                        <input type="text" id="omron" name="omron" readonly placeholder="Se calcula automáticamente">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cintura">Circunferencia de Cintura (cm)</label>
+                        <input type="number" id="cintura" name="cintura" step="0.1" placeholder="cm">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cadera">Circunferencia de Cadera (cm)</label>
+                        <input type="number" id="cadera" name="cadera" step="0.1" placeholder="cm">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="sc">Circunferencia de Muñeca (cm)</label>
+                        <input type="number" id="muneca" name="muneca" step="0.1" placeholder="cm">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="sc">Circunferencia Muscular del brazo (cmb)</label>
+                        <input type="text" id="brazo" name="brazo" readonly>
+                    </div>
+
+                    <!-- Tabla de Pliegues -->
+                    <div class="form-group full-width">
+                        <h4 class="table-title">Pliegues (mm)</h4>
+                        <div class="pliegues-table">
+                            <div class="pliegues-row">
+                                <div class="pliegue-item">
+                                    <label for="pliegue-triceps">Triceps</label>
+                                    <input type="number" id="pliegue-triceps" name="pliegue-triceps" step="0.1" placeholder="mm">
+                                </div>
+                                <div class="pliegue-item">
+                                    <label for="pliegue-subescapular">Subescapular</label>
+                                    <input type="number" id="pliegue-subescapular" name="pliegue-subescapular" step="0.1" placeholder="mm">
+                                </div>
+                            </div>
+                            <div class="pliegues-row">
+                                <div class="pliegue-item">
+                                    <label for="pliegue-biceps">Biceps</label>
+                                    <input type="number" id="pliegue-biceps" name="pliegue-biceps" step="0.1" placeholder="mm">
+                                </div>
+                                <div class="pliegue-item">
+                                    <label for="pliegue-cresta-iliaca">Cresta Iliaca</label>
+                                    <input type="number" id="pliegue-cresta-iliaca" name="pliegue-cresta-iliaca" step="0.1" placeholder="mm">
+                                </div>
+                            </div>
+                            <div class="pliegues-row">
+                                <div class="pliegue-item">
+                                    <label for="pliegue-supraespinal">Supraespinal</label>
+                                    <input type="number" id="pliegue-supraespinal" name="pliegue-supraespinal" step="0.1" placeholder="mm">
+                                </div>
+                                <div class="pliegue-item">
+                                    <label for="pliegue-abdominal">Abdominal</label>
+                                    <input type="number" id="pliegue-abdominal" name="pliegue-abdominal" step="0.1" placeholder="mm">
+                                </div>
+                            </div>
+                            <div class="pliegues-row">
+                                <div class="pliegue-item">
+                                    <label for="pliegue-muslo-anterior">Muslo Anterior</label>
+                                    <input type="number" id="pliegue-muslo-anterior" name="pliegue-muslo-anterior" step="0.1" placeholder="mm">
+                                </div>
+                                <div class="pliegue-item">
+                                    <label for="pliegue-pierna">Pierna (Pantorrilla)</label>
+                                    <input type="number" id="pliegue-pierna" name="pliegue-pierna" step="0.1" placeholder="mm">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contextura">
+                            Contextura (Talla (cm)/Circunferencia de Muñeca (cm))
+                            <button type="button" class="info-btn" id="contextura-info-btn" aria-label="Información sobre Contextura">ℹ️</button>
+                            <small>Calculado automáticamente</small>
+                        </label>
+                        <input type="text" id="contextura" name="contextura" readonly placeholder="Se calcula automáticamente">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="icc">
+                            ICC: Índice Cintura-Cadera (Cintura cm / Cadera cm)
+                            <button type="button" class="info-btn" id="icc-info-btn" aria-label="Información sobre ICC">ℹ️</button>
+                            <small>Calculado automáticamente</small>
+                        </label>
+                        <input type="text" id="icc" name="icc" readonly placeholder="Se calcula automáticamente">
                     </div>
                 </form>
             </section>
@@ -313,5 +397,134 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal de información Contextura -->
+    <div id="contextura-info-modal" class="info-modal" role="dialog" aria-modal="true" aria-labelledby="contextura-info-title" aria-hidden="true" style="display:none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="contextura-info-title">Clasificación de Contextura Corporal</h2>
+                <button type="button" class="modal-close" id="contextura-info-close" aria-label="Cerrar información Contextura">×</button>
+            </div>
+            <div class="modal-body">
+                <p>La contextura corporal se calcula dividiendo la talla (cm) entre la circunferencia de muñeca (cm):</p>
+                <div class="contextura-table">
+                    <h4>Para Hombres:</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Valor (Talla/Muñeca)</th>
+                                <th>Contextura</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>&gt; 10.4</td>
+                                <td>Pequeña</td>
+                            </tr>
+                            <tr>
+                                <td>9.6 - 10.4</td>
+                                <td>Mediana</td>
+                            </tr>
+                            <tr>
+                                <td>&lt; 9.6</td>
+                                <td>Grande</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h4>Para Mujeres:</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Valor (Talla/Muñeca)</th>
+                                <th>Contextura</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>&gt; 11</td>
+                                <td>Pequeña</td>
+                            </tr>
+                            <tr>
+                                <td>10.1 - 11</td>
+                                <td>Mediana</td>
+                            </tr>
+                            <tr>
+                                <td>&lt; 10.1</td>
+                                <td>Grande</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p><strong>Nota:</strong> Esta clasificación ayuda a determinar la estructura ósea y corporal del individuo.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de información ICC -->
+    <div id="icc-info-modal" class="info-modal" role="dialog" aria-modal="true" aria-labelledby="icc-info-title" aria-hidden="true" style="display:none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="icc-info-title">Índice Cintura-Cadera (ICC)</h2>
+                <button type="button" class="modal-close" id="icc-info-close" aria-label="Cerrar información ICC">×</button>
+            </div>
+            <div class="modal-body">
+                <p>El Índice Cintura-Cadera (ICC) se calcula dividiendo la circunferencia de cintura (cm) entre la circunferencia de cadera (cm):</p>
+                <p><strong>Fórmula: ICC = Cintura (cm) / Cadera (cm)</strong></p>
+
+                <div class="icc-table">
+                    <h4>Para Hombres:</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Valor ICC</th>
+                                <th>Clasificación</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>&gt; 1.00</td>
+                                <td>Androide</td>
+                            </tr>
+                            <tr>
+                                <td>0.85 - 1.00</td>
+                                <td>Mixta</td>
+                            </tr>
+                            <tr>
+                                <td>&lt; 0.85</td>
+                                <td>Ginoide</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h4>Para Mujeres:</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Valor ICC</th>
+                                <th>Clasificación</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>&gt; 0.90</td>
+                                <td>Androide</td>
+                            </tr>
+                            <tr>
+                                <td>0.75 - 0.90</td>
+                                <td>Mixta</td>
+                            </tr>
+                            <tr>
+                                <td>&lt; 0.75</td>
+                                <td>Ginoide</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p><strong>Nota:</strong> Este índice ayuda a determinar la distribución de grasa corporal y el riesgo asociado.</p>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
